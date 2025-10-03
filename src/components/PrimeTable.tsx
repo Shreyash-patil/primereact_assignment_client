@@ -6,6 +6,9 @@ import { OverlayPanel } from "primereact/overlaypanel";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import "primereact/resources/themes/lara-light-blue/theme.css"
+import "primereact/resources/primereact.min.css";              
+import "primeicons/primeicons.css";                           
+
 
 interface Artwork {
   id: number;
@@ -43,7 +46,7 @@ export default function ArtworkTable() {
     fetchArtworks(page);
   }, [page]);
 
-  //  Handle selecting N rows starting from current page
+  //  Handles selecting N rows starting from current page
   const handleSelectRows = async () => {
     if (!rowsToSelect || rowsToSelect <= 0) return;
 
@@ -52,11 +55,12 @@ export default function ArtworkTable() {
     let remaining = rowsToSelect;
 
     while (remaining > 0) {
-      // fetch data for this page
+      
       const res = await fetch(`${API_BASE_URL}/artworks?page=${currentPage}`);
       const data = await res.json();
 
-      const slice = data.artworks.slice(0, remaining); // select from this page
+      // select from this page
+      const slice = data.artworks.slice(0, remaining); 
       selected = [...selected, ...slice];
 
       remaining -= slice.length;
