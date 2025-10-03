@@ -43,7 +43,7 @@ export default function ArtworkTable() {
     fetchArtworks(page);
   }, [page]);
 
-  // 👉 Handle selecting N rows starting from current page
+  //  Handle selecting N rows starting from current page
   const handleSelectRows = async () => {
     if (!rowsToSelect || rowsToSelect <= 0) return;
 
@@ -67,7 +67,7 @@ export default function ArtworkTable() {
     op.current?.hide();
   };
 
-  // 👉 Custom header with chevron + overlay trigger
+  // Custom header with chevron and overlay trigger
   const idHeaderTemplate = () => (
     <div className="flex align-items-center gap-2">
       <span>ID</span>
